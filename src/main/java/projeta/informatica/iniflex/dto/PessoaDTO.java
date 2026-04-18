@@ -4,7 +4,7 @@ public class PessoaDTO {
     private String nome;
     private String dataNascimento;
 
-    public PessoaDTO(){
+    public PessoaDTO() {
     }
 
     public PessoaDTO(String nome, String dataNascimento) {

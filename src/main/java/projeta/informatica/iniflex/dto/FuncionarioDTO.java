@@ -3,7 +3,7 @@ package projeta.informatica.iniflex.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
-import java.util.List;
+
 
 public class FuncionarioDTO {
 
@@ -17,6 +17,7 @@ public class FuncionarioDTO {
     public FuncionarioDTO(String maria, LocalDate localDate, String dataNascimento, String operador) {
 
     }
+
     public FuncionarioDTO(String nome, String funcao, String dataNascimento, String salario) {
         this.nome = nome;
         this.funcao = funcao;

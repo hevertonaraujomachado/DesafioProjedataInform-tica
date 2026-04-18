@@ -20,7 +20,7 @@ public class FuncionarioService {
 
         List<Funcionario> funcionarios = new ArrayList<>();
 
-        // dados
+
         funcionarios.add(new Funcionario("Maria", LocalDate.of(2000, 10, 18), new BigDecimal("2009.44"), "Operador"));
         funcionarios.add(new Funcionario("João", LocalDate.of(1990, 5, 12), new BigDecimal("2284.38"), "Operador"));
         funcionarios.add(new Funcionario("Caio", LocalDate.of(1961, 5, 2), new BigDecimal("9836.14"), "Coordenador"));
@@ -32,39 +32,38 @@ public class FuncionarioService {
         funcionarios.add(new Funcionario("Heloisa", LocalDate.of(2003, 5, 24), new BigDecimal("1606.85"), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), new BigDecimal("2799.93"), "Gerente"));
 
-        // remover João
+
         funcionarios.removeIf(f -> "João".equals(f.getNome()));
 
-        // aumento 10%
+
         funcionarios.forEach(f ->
                 f.setSalario(f.getSalario().multiply(new BigDecimal("1.10")))
         );
 
-        // formatadores
+
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         NumberFormat nf = NumberFormat.getInstance(new Locale("pt", "BR"));
         nf.setMinimumFractionDigits(2);
         nf.setMaximumFractionDigits(2);
 
-        // 3.5 Agrupar por função
+
         Map<String, List<Funcionario>> agrupados =
                 funcionarios.stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
 
-        // 3.6 Imprimir agrupados
+
         System.out.println("\n--- Agrupados por função ---");
         agrupados.forEach((funcao, lista) -> {
             System.out.println(funcao + ":");
             lista.forEach(f -> System.out.println(" - " + f.getNome()));
         });
 
-        // 3.8 Aniversários mês 10 e 12
+
         System.out.println("\n--- Aniversariantes ---");
         funcionarios.stream()
                 .filter(f -> f.getDataNascimento().getMonthValue() == 10 ||
                         f.getDataNascimento().getMonthValue() == 12)
                 .forEach(f -> System.out.println(f.getNome()));
 
-        // 3.9 Mais velho
         Funcionario maisVelho = Collections.min(funcionarios,
                 Comparator.comparing(Funcionario::getDataNascimento));
 
@@ -72,20 +71,18 @@ public class FuncionarioService {
 
         System.out.println("\nMais velho: " + maisVelho.getNome() + " - " + idade + " anos");
 
-        // 3.10 Ordem alfabética
+
         System.out.println("\n--- Ordem alfabética ---");
         funcionarios.stream()
                 .sorted(Comparator.comparing(Funcionario::getNome))
                 .forEach(f -> System.out.println(f.getNome()));
 
-        // 3.11 Total salários
         BigDecimal total = funcionarios.stream()
                 .map(Funcionario::getSalario)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         System.out.println("\nTotal salários: " + nf.format(total));
 
-        // 3.12 Salários mínimos
         BigDecimal salarioMinimo = new BigDecimal("1212");
 
         System.out.println("\n--- Salários mínimos ---");
@@ -94,7 +91,7 @@ public class FuncionarioService {
             System.out.println(f.getNome() + ": " + qtd);
         });
 
-        // DTO final
+
         return funcionarios.stream()
                 .map(f -> new FuncionarioDTO(
                         f.getNome(),

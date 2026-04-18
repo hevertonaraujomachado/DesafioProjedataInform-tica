@@ -17,8 +17,9 @@ public class FuncionarioController {
     public FuncionarioController(FuncionarioService service) {
         this.service = service;
     }
+
     @GetMapping
     public List<FuncionarioDTO> listar() {
         return service.executar();
-}
+    }
 }
