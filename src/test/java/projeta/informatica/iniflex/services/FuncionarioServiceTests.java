@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import projeta.informatica.iniflex.services.FuncionarioService;
 import projeta.informatica.iniflex.dto.FuncionarioDTO;
-import projeta.informatica.iniflex.tests.FuncionarioFactory;
-
 import java.util.List;
 import java.util.Map;
 
@@ -66,7 +63,7 @@ void shouldIncreaseSalary_WhenExecutarIsCalled() {
             .findFirst()
             .orElseThrow();
 
-    // só valida que está formatado e diferente do original
+
     assertNotEquals("2009.44", maria.getSalario());
 }
 

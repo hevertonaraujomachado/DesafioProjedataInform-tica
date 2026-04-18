@@ -2,7 +2,6 @@ package projeta.informatica.iniflex.tests;
 
 import projeta.informatica.iniflex.dto.FuncionarioDTO;
 
-import java.time.LocalDate;
 
 public class FuncionarioFactory {
 
